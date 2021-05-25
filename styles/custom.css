@@ -1,0 +1,174 @@
+ul {
+    list-style: none;
+}
+
+button:active {
+    outline: none;
+}
+
+#page main .text-editor a {
+    /** color: #ee4722; **/
+}
+
+/** Custom CSS Fix **/
+.site-main section hr:last-of-type {
+    display: none;
+}
+
+/** Mailchimp css **/
+.mc4wp-response {
+    margin-top: 10px;
+    color: #fff;
+}
+
+.mc4wp-response .mc4wp-error {
+    color: red;
+}
+
+.mc4wp-response .mc4wp-success {
+    color: green;
+}
+
+/** Style contact links **/
+.page-template-page-contact main section a {
+    color: red;
+}
+
+.page-template-page-contact  main section .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+/** Contact Form CSS Fix **/
+.wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.sent .wpcf7-response-output {
+    border: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.wpcf7-not-valid-tip {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+    color: green;
+}
+
+.wpcf7-form-control-wrap {
+    position: unset;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output {
+    color: red;
+}
+
+input[type=text].wpcf7-form-control,
+textarea.wpcf7-form-control {
+    width: 100%;
+}
+
+.wpcf7 textarea {
+    margin-top: 0.5rem;
+}
+
+/** font sizes **/
+.text-editor h1,
+.text-editor h2,
+.text-editor h3,
+.text-editor h4,
+.text-editor h5,
+.text-editor h6 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.text-editor h1 {
+    font-weight: 800 !important;
+}
+
+.text-editor p {
+    line-height: 30px;
+    overflow-y: hidden;
+    font-size: 1.125rem;
+    margin-top: .125rem;
+    padding-top: 2.5rem;
+}
+
+
+/** films styles **/
+.single-films .film-overview #tabs p {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/** Remove the last arrow in the breadcrumb **/
+.breadcrumbs span:last-of-type {
+    display: none;
+}
+
+/** remove the last hr in the sub menu **/
+#submenu hr:last-of-type {
+    display: none;
+}
+
+main #tabs label:not(label:first-of-type) {
+    border-left-width: 1px;
+    padding-left: 1.25rem;
+}
+
+/* Make list look like the design */
+main ul {
+    list-style-type: "-";
+    line-height: 30px;
+    padding: 3.5rem 0.5rem 0 0;
+    margin: 0 0 3.5rem 0;
+    font-size: 1.125rem;
+}
+
+main .text-editor ul li {
+    padding-left: 1.5rem;
+}
+
+main section .text-editor p > a {
+    color: #ee4722;
+}
+
+main section div .access-button:hover {
+    filter: brightness(90%);
+    background-color: #ffd600;
+}
+
+.donate-page h1,
+.donate-page h2,
+.donate-page h3,
+.donate-page h4,
+.donate-page h5,
+.donate-page h6 {
+    padding-top: 3rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+.tabs .tab-label:not(:last-child) {
+    border-right-width: 0;
+    padding-right: 0;
+    border: none;
+}
+
+/** Loading svg css **/
+#read-more-loader {
+    display: flex;
+    justify-content: center;
+}
+
+#filters-input input[type=radio] ~ label {
+    max-width: 300px;
+}
+
+book-now-button {
+    max-width: max-content;
+}

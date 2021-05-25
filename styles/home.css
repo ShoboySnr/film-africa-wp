@@ -1,0 +1,38 @@
+/* HOME */
+.home__banner {
+  @apply text-right;
+  @apply inline-block;
+  @apply absolute;
+  height: 9.5rem;
+  max-width: 450px;
+  bottom: 15vh;
+  right: 1rem;
+}
+
+.polygon {
+  clip-path: polygon(
+    50% 0%,
+    100% 0,
+    100% 100%,
+    32% 100%,
+    35% 57%,
+    4% 57%,
+    8% 0%
+  );
+  @apply bg-white;
+}
+
+.event__title {
+  @apply text-xl lg:text-3xl text-white break-normal max-w-sm;
+}
+
+@media (min-width: 768px) {
+  .home__banner {
+    right: 3.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .home__banner {
+    right: 6rem;
+  }
+}

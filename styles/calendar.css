@@ -1,0 +1,65 @@
+.cal {
+  max-width: 280px;
+  width: 100%;
+}
+.cal-week,
+.cal-body {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 14.28%));
+  justify-items: center;
+}
+
+.cal-week{
+  border-width: 2px;
+}
+#v-cal .vcal-day,
+#v-cal .vcal-date {
+  align-items: center;
+  background-color: #fff;
+  border-radius: var(--vcal-border-radius);
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 14.28%;
+  padding: 0.6rem 0;
+  @apply w-full;
+  @apply cursor-pointer;
+}
+
+#v-cal .vcal-date:hover {
+  @apply bg-opacity-80;
+}
+
+ #v-cal .vcal-date {
+  @apply border-t;
+  @apply border-r;
+  color: var(--color-gray-3);
+}
+
+#v-cal .vcal-date:nth-child(-n+8) {
+  @apply border-t;
+}
+
+#v-cal .cal-week :nth-child(7n){
+  @apply border-r-0;
+}
+
+#v-cal .vcal-date--active {
+  cursor: pointer;
+}
+
+#v-cal .vcal-date--today {
+  background-color: var(--color-red);
+  color:#fff;
+}
+
+#v-cal .vcal-date--selected {
+  background-color: var(--vcal-selected-bg-color);
+  color: var(--color-black-1);
+  @apply font-bold;
+}
+
+#v-cal .vcal-date--disabled {
+  border-radius: 0;
+  cursor: not-allowed;
+  opacity: 0.5;
+}

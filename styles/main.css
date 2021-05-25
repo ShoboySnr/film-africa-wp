@@ -1,0 +1,81 @@
+@import "./tailwind/index.css";
+@import "./calendar.css";
+
+:root {
+  --color-black: #000000;
+  --color-black-1: #393939;
+  --color-black-2: #222222;
+  --color-black-3: #0a0a0a;
+  --color-gray-1: #f7f7f7;
+  --color-gray-2: #f2f2f2;
+  --color-gray-3: #bdbdbd;
+  --color-gray-4: #474747;
+  --color-gray-5: #e0e0e0;
+  --color-gray-6: #fbfbfb;
+  --color-red: #ee4722;
+  --color-yellow: #ffd600;
+  --color-overlay: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  src: url("../../assets/fonts/HKGrotesk-Thin.woff.woff") format("woff"),
+    url("../../assets/fonts/HKGrotesk-Thin.woff") format("woff2");
+  font-weight: thin;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  src: url("../../assets/fonts/HKGrotesk-Regular.woff") format("woff"),
+    url("../../assets/fonts/HKGrotesk-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: HKGrotesk;
+  src: url("../../assets/fonts/HKGrotesk-Medium.woff") format("woff"),
+    url("../../assets/fonts/HKGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: HKGrotesk;
+  src: url("../../assets/fonts/HKGrotesk-SemiBold.woff") format("woff"),
+    url("../../assets/fonts/HKGrotesk-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: HKGrotesk;
+  src: url("../../assets/fonts/HKGrotesk-Bold.woff") format("woff"),
+    url("../../assets/fonts/HKGrotesk-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: HKGrotesk;
+  src: url("../../assets/fonts/HKGrotesk-Black.woff") format("woff"),
+    url("../../assets/fonts/HKGrotesk-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: HKGrotesk, Helvetica, sans-serif !important;
+  font-size: 18px;
+  color: var(--color-black-2);
+}
