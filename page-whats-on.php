@@ -15,9 +15,9 @@ $whats_on = WhatsOn::get_instance()->get_all_whatson($filter_by, $location, $sub
 //specify which taxonomy to show for the sub filter
 $specific_taxonomies = ['Narrative Features', 'Documentaries', 'Doc Shorts', 'Fiction Shorts', 'Film Africa Live', 'Dine and View'];
 if($filter_by == 'events') {
-    $specific_taxonomies = ['Narrative Features', 'Documentaries', 'Doc Shorts', 'Fiction Shorts'];
-} elseif ($filter_by == 'films') {
     $specific_taxonomies = ['Film Africa Live', 'Dine and View'];
+} elseif ($filter_by == 'films') {
+    $specific_taxonomies = ['Narrative Features', 'Documentaries', 'Doc Shorts', 'Fiction Shorts'];
 }
 $get_sub_categories = WhatsOn::get_instance()->get_sub_taxonomy('whats_on_category', $filter_by, $specific_taxonomies);
 $max_number_pages = $whats_on['max_num_pages'];

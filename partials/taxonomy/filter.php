@@ -1,31 +1,53 @@
 <?php
-$filter_by = $_GET['filter-by'] ?? '';
+use FilmAfricaWP\classes\Taxonomy;
 
-$term_id = get_queried_object()->term_id;
-$taxonomy = get_queried_object()->taxonomy;
-$terms = get_term_by('id', $term_id, $taxonomy);
 
-$has_overview = get_field('has_overview', $terms);
-var_dump($has_overview);
+$check_news = Taxonomy::get_instance()->check_if_taxonomy_exists($terms->slug, $taxonomy);
+$check_events = Taxonomy::get_instance()->check_if_taxonomy_exists($terms->slug, $taxonomy, 'events');
+$check_films = Taxonomy::get_instance()->check_if_taxonomy_exists($terms->slug, $taxonomy, 'films');
+
 ?>
-<div id="filters" class="filters custom-container">
+
+<section>
+    <div id="filters" class="filters custom-container">
     <div class="relative category" id="filters-input">
-        <input class="hidden filter" type="radio" name="filter-by" id="overview" <?= $filter_by == '' ? 'checked': '' ?>>
+        <?php
+
+        if($has_overview) {
+        ?>
+        <input class="hidden filter" type="radio" name="filter-by" value="" id="overview" <?= $filter_by == '' ? 'checked': '' ?>>
         <label class="filter-option  category-item" for="overview">
             <?= __('Overview', 'film-africa-wp') ?>
         </label>
+        <?php
+        }
 
-        <input class="hidden filter" type="radio" name="filter-by" id="films" value="films" <?= $filter_by == 'films' ? 'checked': '' ?>>
+        if($check_films) {
+        ?>
+
+        <input class="hidden filter" type="radio" name="filter-by" id="films" value="films" <?= (!$has_overview && $filter_by == '') || $filter_by == 'films' ? 'checked': '' ?>>
         <label class="filter-option  category-item" for="films">
            <?= __('Films', 'film-africa-wp') ?>
         </label>
-        <input class="hidden filter" type="radio" name="filter-by" id="events" value="events" <?= $filter_by == 'events' ? 'checked': '' ?>>
+        <?php
+        }
+
+        if($check_events) {
+        ?>
+        <input class="hidden filter" type="radio" name="filter-by" id="events" value="events" <?= (!$has_overview && $filter_by == '') || $filter_by == 'events' ? 'checked': '' ?>>
         <label class="filter-option  category-item" for="events">
             <?= __('Events', 'film-africa-wp') ?>
         </label>
-        <input class="hidden filter" type="radio" name="filter-by" id="news" value="news" <?= $filter_by == 'news' ? 'checked': '' ?>>
+        <?php
+        }
+
+        if($check_news) {
+        ?>
+        <input class="hidden filter" type="radio" name="filter-by" id="news" value="news" <?= (!$has_overview && $filter_by == '') ||  $filter_by == 'post' || $filter_by == 'news' ? 'checked': '' ?>>
         <label class="filter-option  category-item" for="news">
             <?= __('News', 'film-africa-wp') ?>
         </label>
+        <?php } ?>
     </div>
 </div>
+</section>

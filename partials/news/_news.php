@@ -18,9 +18,11 @@
                 if(isset($new['category']['title'])) {
             ?>
             <p class="post-venue">
-                <span class="inline-block bg-black text-white px-3 py-2 text-xs"
-                ><?= $new['category']['title']  ?></span
-                >
+                <a href="<?= get_term_link($new['category']['id']) ?>" title="<?= $new['category']['title'] ?>">
+                    <span class="inline-block bg-black text-white px-3 py-2 text-xs hover:bg-transparent hover:text-red"
+                    ><?= $new['category']['title']  ?></span
+                    >
+                </a>
             </p>
             <?php } ?>
             <a href="<?= $new['link'] ?>" class="post-title">

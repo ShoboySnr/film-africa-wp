@@ -202,4 +202,43 @@ body.category {
     display: block !important;
     margin-top: unset !important;
     margin-bottom: unset !important;
+    overflow-x: unset;
+    overflow-y: unset;
+}
+
+/** Customize the overview tab in taxonomy **/
+#overview-category h1 {
+    font-weight: 800;
+}
+#overview-category h2 {
+    font-weight: 800;
+}
+#overview-category h3 {
+    font-weight: 700;
+}
+#overview-category h4  {
+    font-weight: 600;
+}
+#overview-category h5 {
+    font-weight: 500;
+}
+#overview-category h6 {
+    font-weight: 500;
+}
+
+#overview-category p {
+    line-height: 30px;
+    font-weight: 400;
+}
+
+/** Add hover on the menu links **/
+ul#primary-menu li a:hover {
+    text-decoration: underline;
+}
+
+/** Increase the width of the sub category on what's on **/
+@media (min-width: 1024px) {
+    .subcategory {
+        max-width: 55rem;
+    }
 }

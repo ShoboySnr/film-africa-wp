@@ -37,22 +37,6 @@ $(document).on('click', '#tabs input', function(event) {
     document.location.href = path(window.location.href, name, subcategory_val);
 });
 
-// //autoplay option
-// $(document).on('click', '#play-btn', function(event) {
-//     const trailer_id = $(this).attr('data-video-id');
-//     $html = '<div class="flex justify-center items-center h-full w-full">' +
-//         '            <div class="modal modal-lg">' +
-//         '                <div class="modal-content">' +
-//         '                    <iframe class="w-full h-full" height="650" src="https://www.youtube.com/embed/' + trailer_id + '?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n' +
-//         '                </div>' +
-//         '                <button type="button" id="stop-btn" class="modal-close-btn">' +
-//         '                    &times;' +
-//         '                </button>' +
-//         '            </div>' +
-//         '        </div>'
-//     $('#trailer').html($html);
-// });
-
 $(document).on('click', '#stop-btn', function(event) {
    $('#play-btn').removeClass('hidden');
    $('.watch-trailer').removeClass('opacity-0');
@@ -342,6 +326,109 @@ $(document).on('click', '.search-results #read-more-button', function (event) {
                 }
 
             $('#ajax-contents').append($append_html);
+
+            }
+
+            if(data.data.max_num_pages > 0 && data.data.max_num_pages > count_click_see_more) {
+                read_more_button.show();
+                read_more.hide();
+            } else {
+                read_more_button.hide();
+                read_more.html('<p>You\'ve reached the end.</p>');
+            }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+
+        }
+    });
+});
+
+$(document).on('click', '.archive #read-more-button', function (event) {
+    event.preventDefault();
+    const read_more = $('#read-more-loader');
+    const read_more_button = $(this);
+
+    read_more_button.hide();
+    read_more.show();
+    count_click_see_more++;
+
+    const api_endpoint = $(this).attr('data-api') + '&paged=' + count_click_see_more;
+    const left_arrow = $(this).attr('data-arrow');
+
+
+    $append_html = '';
+
+    $.ajax(api_endpoint, {
+        dataType: 'json',
+        type: 'GET',
+        success: function (data, status, xhr) {
+            if(data.data.data.length > 0) {
+                $.each(data.data.data, function (index, value) {
+                    if(value.post_type === 'Post') {
+                        let category = value.category?.title?.length > 0 ? '<p class="post-venue"><span class="inline-block bg-black text-white px-3 py-2 text-xs">' + value.category.title + '</span></p>' : '';
+                        $append_html += '<figure class="custom-grid grid-rows-1">' +
+                            '    <div class="w-full max-h-96 overflow-hidden">' +
+                            '        <img' +
+                            '            class="h-full w-full object-cover object-center"' +
+                            '            src="' + value.image +'"' +
+                            '            alt="' + value.title + '"' +
+                            '            title="' + value.title + '"' +
+                            '        >' +
+                            '    </div>' +
+                            '    <figcaption' +
+                            '        class="post-caption"' +
+                            '    >' +
+                            '        <div class="bg-white p-4 xl:p-6 w-full">' +
+                            category +
+                            '            <a href="' + value.link + '" class="post-title" title="' + value.title + '">' +
+                            value.title +
+                            '            </a>' +
+                            '            <p class="post-details  text-gray-4">' +
+                            '                <a href="' + value.link + '" class="underline hover:text-red">Read more</a>' +
+                            '            </p>' +
+                            '        </div>' +
+                            '    </figcaption>' +
+                            '</figure>';
+                    } else {
+                        let post_type_color = '';
+                        if( value.post_type === 'Films') {
+                            post_type_color = '<span class="bg-yellow post-tag">' + value.post_type + '</span>';
+                        } else if (value.post_type === 'Events') {
+                            post_type_color = '<span class="bg-red text-white post-tag">'+ value.post_type + '</span>';
+                        }
+                        let category = value.category.length > 0 ? '<span class="text-gray-4">' + value.category.title + '</span>' : '';
+                        let location = value.location.length > 0 ? '<span class="font-black">' + value.location.title + '</span>' : '';
+                        $append_html += '<figure class="custom-grid">' +
+                            '    <div class="relative h-full w-full">' +
+                            '        <img' +
+                            '            class="h-full w-full object-cover object-center"' +
+                            '            src="' + value.image +'"' +
+                            '            alt="' + value.title + '"' +
+                            '            title="' + value.title + '"' +
+                            '            height="282"' +
+                            '            width="390"' +
+                            '        >' + post_type_color +
+                            '    </div>' +
+                            '    <figcaption class="post-caption">' +
+                            '        <div class="post-content">' +
+                            '            <p class="post-venue">' + category + location + '</p>' +
+                            '            <a href="' + value.link + '" title="' + value.title + '" class="post-title">' + value.title + '</a>' +
+                            '            <p class="post-details">' +
+                            '                <time datetime="' + value.date + '">' + value.date + '</time>' +
+                            '                <a' +
+                            '                    href="' + value.link + '"' +
+                            '                    class="arrow-btn"' +
+                            '                    title="See more"' +
+                            '                >' + left_arrow +
+                            '                </a>' +
+                            '            </p>' +
+                            '        </div>' +
+                            '    </figcaption>' +
+                            '</figure>';
+                    }
+                });
+
+                $('#ajax-contents').append($append_html);
 
             }
 

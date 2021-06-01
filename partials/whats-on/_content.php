@@ -29,11 +29,15 @@ if($new['post_type'] == 'films') {
 
                 if (isset($new['category']['title'])) {
                 ?>
-                <span class="text-gray-4"><?= $new['category']['title']; ?></span>
+                <a href="<?= get_term_link($new['category']['id']) ?>" class="text-gray-4 hover:text-red" title="<?= $new['category']['title']; ?>">
+                    <span class="text-gray-4 hover:text-red"><?= $new['category']['title']; ?></span>
+                </a>
                 <?php }
                 if(isset($new['location']['title'])) {
                 ?>
-                <span class="font-black"><?= $new['location']['title'] ?></span>
+                 <a href="<?= get_term_link($new['location']['id']) ?>" class="font-black hover:text-red" title="<?= $new['location']['title']; ?>">
+                     <span class="font-black hover:text-red"><?= $new['location']['title'] ?></span>
+                 </a>
                 <?php } ?>
             </p>
             <a href="<?= $new['link'] ?>" title="<?= $new['title'] ?>" class="post-title">

@@ -9,7 +9,6 @@ get_header();
 
 ?>
 <main class="border-t">
-    <section>
     <?php
     while ( have_posts() ) :
         the_post();
@@ -19,7 +18,6 @@ get_header();
 
 
     ?>
-    </section>
 </main>
 <?php
 get_footer();

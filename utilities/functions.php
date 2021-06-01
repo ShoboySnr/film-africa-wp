@@ -235,7 +235,7 @@ function render_header_banner_template()
         return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-single.php';
     }
 
-    if($posts[0]->post_name == 'press') {
+    if(isset($posts[0]) && $posts[0]->post_name == 'press') {
         return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-press.php';
     }
 
@@ -370,6 +370,18 @@ function register_rest_routes() {
             $sub_category = $requests->get_param('sub_category');
             $current_date = $requests->get_param('current_date');
             return Pagination::get_instance()->get_all_whatson($filter_by, $location, $sub_category, $paged, $current_date);
+        },
+        'permission_callback' => '__return_true',
+    ));
+
+    register_rest_route( FILM_AFRICA_API_BASE_ROUTE, '/taxonomy/pages', array(
+        'methods' => 'GET',
+        'callback' => function($requests) {
+            $paged = $requests->get_param('paged');
+            $filter_by = $requests->get_param('filter_by');
+            $taxonomy_name = $requests->get_param('taxonomy_name');
+            $taxonomy = $requests->get_param('taxonomy');
+            return Pagination::get_instance()->get_next_taxonomies($taxonomy_name, $taxonomy, $filter_by, $paged);
         },
         'permission_callback' => '__return_true',
     ));
