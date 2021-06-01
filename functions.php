@@ -212,6 +212,7 @@ function film_africa_wp_scripts() {
 	wp_style_add_data( 'film-africa-wp-style', 'rtl', 'replace' );
 
     wp_enqueue_script('film-africa-jquery', '//code.jquery.com/jquery-3.5.1.min.js', false, null, true);
+    wp_enqueue_script('film-africa-jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js', false, null, true);
 
 	wp_enqueue_script( 'film-africa-wp-navigation', get_template_directory_uri() . '/scripts/nav.js', array(), _S_VERSION, true );
 	if (is_front_page()) {
@@ -265,4 +266,10 @@ require get_template_directory() . '/utilities/functions.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+function film_africa_video_popup_attributes( $video_url ) {
+    $video_url .= '&amp;autoplay=1&amp;modestbranding=1';
+    return $video_url;
+}
+add_filter( 'wp_video_popup', 'film_africa_video_popup_attributes' );
 

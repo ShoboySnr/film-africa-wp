@@ -37,21 +37,21 @@ $(document).on('click', '#tabs input', function(event) {
     document.location.href = path(window.location.href, name, subcategory_val);
 });
 
-//autoplay option
-$(document).on('click', '#play-btn', function(event) {
-    const trailer_id = $(this).attr('data-video-id');
-    $html = '<div class="flex justify-center items-center h-full w-full">' +
-        '            <div class="modal modal-lg">' +
-        '                <div class="modal-content">' +
-        '                    <iframe class="w-full h-full" height="650" src="https://www.youtube.com/embed/' + trailer_id + '?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n' +
-        '                </div>' +
-        '                <button type="button" id="stop-btn" class="modal-close-btn">' +
-        '                    &times;' +
-        '                </button>' +
-        '            </div>' +
-        '        </div>'
-    $('#trailer').html($html);
-});
+// //autoplay option
+// $(document).on('click', '#play-btn', function(event) {
+//     const trailer_id = $(this).attr('data-video-id');
+//     $html = '<div class="flex justify-center items-center h-full w-full">' +
+//         '            <div class="modal modal-lg">' +
+//         '                <div class="modal-content">' +
+//         '                    <iframe class="w-full h-full" height="650" src="https://www.youtube.com/embed/' + trailer_id + '?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n' +
+//         '                </div>' +
+//         '                <button type="button" id="stop-btn" class="modal-close-btn">' +
+//         '                    &times;' +
+//         '                </button>' +
+//         '            </div>' +
+//         '        </div>'
+//     $('#trailer').html($html);
+// });
 
 $(document).on('click', '#stop-btn', function(event) {
    $('#play-btn').removeClass('hidden');

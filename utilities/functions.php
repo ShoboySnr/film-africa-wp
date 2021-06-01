@@ -137,18 +137,25 @@ if (!function_exists('custom_breadcrumb')) {
                             'numberposts' => 1,
                         ];
                         $page = get_posts($args);
-                        $page = isset($page[0]) ? $page[0] : $page;
-                        if (!empty($page)) {
-                            $title = $page->post_title;
-                            if (get_the_ID() != $page->ID) {
-                                $html .= '<span><a href="' . get_permalink($page->ID) . '" title="' . $title . '">' . $title . '</a></span>' . $sep;
-                            } else {
-                                $html .= '<span>' . $title . '</span>' . $sep;
-                            }
+                        if(!empty($page)) {
+                            $page = isset($page[0]) ? $page[0] : $page;
+                            if (!empty($page)) {
+                                $title = $page->post_title;
+                                if (get_the_ID() != $page->ID) {
+                                    $html .= '<span><a href="' . get_permalink($page->ID) . '" title="' . $title . '">' . $title . '</a></span>' . $sep;
+                                } else {
+                                    $html .= '<span>' . $title . '</span>' . $sep;
+                                }
 
+                            }
                         }
                     }
                 }
+            }
+
+            if(is_archive()) {
+                $terms = get_term_by('slug', $crumbs[2], $crumbs[1], ARRAY_N);
+                var_dump($terms);
             }
 
             $html .= '</section>';
@@ -204,13 +211,17 @@ function render_header_banner_template()
 
     if (is_tax('year_category')) {
         $post_type = 'past_festivals';
-        return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-taxonomy.php';
+        return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-taxonomy-festivals.php';
     }
 
     if (is_tax('fallow_years_category')) {
         $post_type = 'fallow_years';
-        return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-taxonomy.php';
+        return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-taxonomy-festivals.php';
 
+    }
+
+    if(is_archive()) {
+        return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-taxonomy.php';
     }
 
     if (is_home()) {
@@ -347,7 +358,21 @@ add_action('trashed_post', function ($post_id) {
 
 }, 1, 1);
 
-    resources-and-references
+//Rest API to handle pagination
+add_action('rest_api_init', 'register_rest_routes');
+function register_rest_routes() {
+    register_rest_route( FILM_AFRICA_API_BASE_ROUTE, '/whats-on/pages', array(
+        'methods' => 'GET',
+        'callback' => function($requests) {
+            $paged = $requests->get_param('paged');
+            $filter_by = $requests->get_param('filter_by');
+            $location = $requests->get_param('location');
+            $sub_category = $requests->get_param('sub_category');
+            $current_date = $requests->get_param('current_date');
+            return Pagination::get_instance()->get_all_whatson($filter_by, $location, $sub_category, $paged, $current_date);
+        },
+        'permission_callback' => '__return_true',
+    ));
 
     register_rest_route( FILM_AFRICA_API_BASE_ROUTE, '/search/pages', array(
         'methods' => 'GET',

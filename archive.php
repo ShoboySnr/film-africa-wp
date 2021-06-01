@@ -7,6 +7,10 @@
  * @package Film_Africa_Theme
  */
 
+$term_id = get_queried_object()->term_id;
+$taxonomy = get_queried_object()->taxonomy;
+$terms = get_term_by('id', $term_id, $taxonomy);
+
 get_header();
 ?>
 
@@ -47,5 +51,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

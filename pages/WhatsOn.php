@@ -86,15 +86,18 @@ class WhatsOn {
         return $return_post;
     }
 
-    public function get_sub_taxonomy($taxonomy = 'category', $post_type = ['events', 'films']) {
+    public function get_sub_taxonomy($taxonomy = 'category', $post_type = ['events', 'films'], $specific_taxonomy_names = []) {
         $return_cat = [];
 
         if (empty($post_type)) $post_type = ['events', 'films'];
-        $posts_in_post_type = get_posts( array(
+        $posts_args = [
             'fields' => 'ids',
             'post_type' => $post_type,
             'posts_per_page' => -1,
-        ) );
+            'tax_query'     => [],
+        ];
+
+        $posts_in_post_type = get_posts( $posts_args);
 
         $args = [
             'taxonomy'          => $taxonomy,
@@ -105,11 +108,13 @@ class WhatsOn {
 
         if(!empty($categories)) {
             foreach($categories as $category) {
-                $return_cat[] = [
-                    'id' => $category->term_id,
-                    'title' => $category->name,
-                    'slug' => $category->slug,
-                ];
+                if(in_array($category->name, $specific_taxonomy_names)) {
+                    $return_cat[] = [
+                        'id' => $category->term_id,
+                        'title' => $category->name,
+                        'slug' => $category->slug,
+                    ];
+                }
             }
         };
 

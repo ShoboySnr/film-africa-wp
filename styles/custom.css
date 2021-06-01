@@ -105,9 +105,9 @@ textarea.wpcf7-form-control {
 }
 
 /** Remove the last arrow in the breadcrumb **/
-.breadcrumbs span:last-of-type {
-    display: none;
-}
+/*.breadcrumbs span:last-of-type {*/
+/*    display: none;*/
+/*}*/
 
 /** remove the last hr in the sub menu **/
 #submenu hr:last-of-type {
@@ -169,6 +169,37 @@ main section div .access-button:hover {
     max-width: 300px;
 }
 
-book-now-button {
+.book-now-button {
     max-width: max-content;
+}
+
+/** Video Popup Widget **/
+.wp-video-popup-wrapper {
+    background: rgba(0, 0, 0, 0.40);
+}
+.wp-video-popup-video.is-landscape {
+    max-width: 900px;
+    max-height: 80%;
+}
+
+.wp-video-popup-close {
+    top: 50px;
+    right: 50px;
+}
+
+/** Filters Select Drop Down max-width **/
+#filters > span > select {
+    max-width: 6.437rem !important;
+}
+
+/** height of the default banner of those banners that has no featured image **/
+.h-356 {
+    height: 22.25rem;
+}
+
+/** Revert the category class styling created by tailwind csss **/
+body.category {
+    display: block !important;
+    margin-top: unset !important;
+    margin-bottom: unset !important;
 }

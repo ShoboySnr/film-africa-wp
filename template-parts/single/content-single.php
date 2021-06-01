@@ -69,7 +69,7 @@ $mail_link = "mailto:?subject=$title&body=$excerpt - $url";
                 </p>
                 <div class="pt-10">
                     <small class="uppercase tracking-widest"><?= __('share', 'film-africa-wp') ?></small>
-                    <ul class="flex gap-5 items-center pt-6">
+                    <ol class="flex gap-5 items-center pt-6">
                         <li>
                             <a href="<?= $twitter_link ?>" target="_blank" title="<?= __('Share this on twitter', 'film-africa-wp') ?>">
                                 <img src="<?= $twitter ?>" alt="<?= __('twitter', 'film-africa-wp') ?>" >
@@ -86,7 +86,7 @@ $mail_link = "mailto:?subject=$title&body=$excerpt - $url";
                                 <img src="<?= $mail; ?>" alt="<?= __('mail', 'film-africa-wp') ?>" >
                             </a>
                         </li>
-                    </ul>
+                    </ol>
                 </div>
                 <?php
 

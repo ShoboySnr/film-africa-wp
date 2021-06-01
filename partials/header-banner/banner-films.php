@@ -13,8 +13,9 @@ $date = custom_date_format(get_field('start_date'), get_field('end_date'));
         <img src="<?= get_the_post_thumbnail_url() ?>" alt="movie-poster" class="trailer h-full w-full object-cover object-bottom absolute top-0 left-0">
         <?php
         if(!empty($trailer)) {
+            echo do_shortcode('[wp-video-popup video="https://vimeo.com/463645269", hide-related="1"]')
             ?>
-            <button type="button" id="play-btn" class="z-10 absolute top-1.5/5 -ml-10 md:ml-0 left-2.5/5 focus:outline-white" data-video-id="<?= $trailer ?>">
+            <button type="button" id="play-btn" class="z-10 absolute top-1.5/5 -ml-10 md:ml-0 left-2.5/5 focus:outline-white wp-video-popup">
                 <picture>
                     <img src="<?= $play; ?>" alt="<?= __('play', 'film-africa-wp') ?>" title="<?= __('Play', 'film-africa-wp') ?>" >
                 </picture>
@@ -46,11 +47,7 @@ $date = custom_date_format(get_field('start_date'), get_field('end_date'));
 
             <span><?=  __('Book Now', 'film-africa-wp') ?> </span>
         </a>
+
     </div>
-    <?php } ?>
-    <?php
-    if(!empty($trailer)) {
-    ?>
-    <section id="trailer" class="modal-container hide-trailer modal-overlay"></section>
     <?php } ?>
 </section>

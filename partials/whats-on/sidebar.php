@@ -1,3 +1,16 @@
+<?php
+
+$url = get_permalink();
+$content = substr(get_the_title(), 0, 100);
+$title = get_the_title();
+$excerpt = get_the_excerpt();
+$category_name = isset($category[0]) ? $category[0]->name : '';
+$twitter_link = "https://twitter.com/share?text=$content&url=$url&hashtags=filmafrica,$category_name";
+$facebook_link = "https://www.facebook.com/sharer/sharer.php?u=$url&t=$title";
+$mail_link = "mailto:?subject=$title&body=$excerpt - $url";
+
+?>
+
 <div class="film-details">
     <?php
     if(!empty($categories)) {
@@ -21,7 +34,7 @@
         if(!empty($location)) {
             ?>
             <div class="flex pt-4 items-center">
-                <picture class="mr-4">
+                <picture class="mr-4 flex-shrink-0">
                     <img src="<?= $location_pin ?>" alt="<?= __('location', 'film-africa-wp') ?>" >
                 </picture>
                 <span><?= $location ?></span>
@@ -87,24 +100,24 @@
     <?php } ?>
     <div class="pt-10">
         <small class="uppercase tracking-widest"><?= __('share', 'film-africa-wp') ?></small>
-        <ul class="flex gap-5 items-center pt-6">
+        <ol class="flex gap-5 items-center pt-6">
             <li>
-                <a href="#">
+                <a href="<?= $twitter_link ?>" target="_blank" title="<?= __('Share this on twitter', 'film-africa-wp') ?>">
                     <img src="<?= $twitter; ?>" alt="<?= __('twitter', 'film-africa-wp') ?>" >
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= $facebook_link ?>" target="_blank" title="<?= __('Share this on facebook', 'film-africa-wp') ?>">
                     <img src="<?= $facebook ?>" alt="<?= __('facebook', 'film-africa-wp') ?>" >
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?= $mail_link ?>" target="_blank" title="<?= __('Send as email', 'film-africa-wp') ?>">
                     <img src="<?= $mail; ?>" alt="<?= __('mail', 'film-africa-wp') ?>" >
                 </a>
             </li>
-        </ul>
+        </ol>
     </div>
     <?php
 
