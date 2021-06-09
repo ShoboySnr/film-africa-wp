@@ -3,12 +3,14 @@
 ?>
 <figure class="custom-grid grid-rows-1">
     <div class="w-full max-h-96 overflow-hidden">
-        <img
-            class="h-full w-full object-cover object-center"
-            src="<?= $new['image'] ?>"
-            alt="<?= $new['title'] ?>"
-            title="<?= $new['title'] ?>"
-        >
+        <a href="<?= $new['link'] ?>">
+            <img
+                class="h-full w-full object-cover object-center"
+                src="<?= $new['image'] ?>"
+                alt="<?= $new['title'] ?>"
+                title="<?= $new['title'] ?>"
+            >
+        </a>
     </div>
     <figcaption
         class="post-caption"

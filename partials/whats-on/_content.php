@@ -11,14 +11,16 @@ if($new['post_type'] == 'films') {
 ?>
 <figure class="custom-grid">
     <div class="relative h-full w-full">
-        <img
-            class="h-full w-full object-cover object-center"
-            src="<?= $new['image'] ?>"
-            alt="<?= $new['title'] ?>"
-            title="<?= $new['title'] ?>"
-            height="282"
-            width="390"
-        >
+        <a href="<?= $new['link'] ?>" title="<?= $new['title'] ?>">
+            <img
+                class="h-full w-full object-cover object-center"
+                src="<?= $new['image'] ?>"
+                alt="<?= $new['title'] ?>"
+                title="<?= $new['title'] ?>"
+                height="282"
+                width="390"
+            >
+        </a>
         <?= $post_type ?>
     </div>
 

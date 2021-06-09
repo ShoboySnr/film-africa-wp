@@ -1,10 +1,11 @@
 <?php
 $remove_query_link = remove_query_arg(['filter-by', 'festival-year', 'subcategory-filter', 'location', 'goto', 'date']);
+$add_only_filterby_link = remove_query_arg(['festival-year', 'subcategory-filter', 'location', 'goto', 'date']);
 
 ?>
 <div class="custom-container relative">
     <section class="w-full filters flex flex-col lg:flex-row items-start lg:items-center overflow-x-auto mb-6">
-    <div class="category" id="filters-input">
+    <div class="category" id="filters-input" data-reset-link="<?= $add_only_filterby_link ?>">
         <input class="hidden filter" type="radio" name="filter-by" id="all" value=""
         <?= $filter_by == '' ? 'checked': '' ?>>
         <label
@@ -47,7 +48,7 @@ $remove_query_link = remove_query_arg(['filter-by', 'festival-year', 'subcategor
     </button>
 </section>
     <div class="cal-container">
-        <div id="v-cal" class="cal hidden">
+        <div id="v-cal" class="cal <?= $filter_by != 'calender' ? 'hidden' : '' ?>">
             <?php include FILM_AFRICA_PARTIAL_VIEWS.'/whats-on/calender.php'; ?>
         </div>
         <div class="cal-overlay hidden fixed bottom-0 top-0 left-0 right-0"></div>

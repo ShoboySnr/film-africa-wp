@@ -39,7 +39,7 @@ $whats_on_posts = $whats_on['whats_on']
                             <?php
                             if(isset($whats_on_post['category']['title']) && $whats_on_post['category']['title'] != '') {
                             ?>
-                            <span class="text-gray-4"><?= $whats_on_post['category']['title'] ?></span>
+                            <a href="<?= $whats_on_post['category']['link'] ?>" title="<?= $whats_on_post['category']['title'] ?>" class="text-gray-4 hover:text-red"><?= $whats_on_post['category']['title'] ?></a>
                             <?php
                             }
                             if(isset($whats_on_post['location']['title']) && $whats_on_post['location']['title'] != '') {
@@ -79,7 +79,7 @@ $whats_on_posts = $whats_on['whats_on']
                                     <?php
                                     if(isset($whats_on_post['category']['title']) && $whats_on_post['category']['title'] != '') {
                                         ?>
-                                        <span class="text-gray-4"><?= $whats_on_post['category']['title'] ?></span>
+                                        <a href="<?= $whats_on_post['category']['link'] ?>" title="<?= $whats_on_post['category']['title'] ?>" class="text-gray-4 hover:text-red"><?= $whats_on_post['category']['title'] ?></a>
                                         <?php
                                     }
                                     if(isset($whats_on_post['location']['title']) && $whats_on_post['location']['title'] != '') {

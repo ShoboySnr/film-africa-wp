@@ -21,6 +21,7 @@ class Utilities
                     'id' => $category->term_id,
                     'title' => html_entity_decode($category->name),
                     'slug' => $category->slug,
+                    'link' => get_term_link($category->term_id),
                 ];
             }
         } else {
@@ -71,6 +72,7 @@ class Utilities
                     'id' => $category->term_id,
                     'title' => html_entity_decode($category->name),
                     'slug' => $category->slug,
+                    'link'  => get_term_link($category->term_id),
                 ];
             }
         } else {
@@ -78,6 +80,29 @@ class Utilities
         }
 
         return $return_cat;
+    }
+
+    public function get_directors_cast_crew($post) {
+        $return_post = [];
+
+        for($count = 0; $count < 8; $count++) {
+            $cast_name = get_field('cast_name_' . $count, $post);
+            $details = get_field('details_' . $count, $post);
+            $picture = '';
+            if (isset($cast_name) && $cast_name != '') {
+                $picture = get_field('picture_' . $count, $post);
+            }
+
+            if (!empty($cast_name)) {
+                $return_post[] = [
+                    'name' => $cast_name,
+                    'picture' => $picture,
+                    'details' => $details,
+                ];
+            }
+        }
+
+        return $return_post;
     }
 
     public function get_awards_posts($award_type)

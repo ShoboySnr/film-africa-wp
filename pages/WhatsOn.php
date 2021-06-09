@@ -121,12 +121,12 @@ class WhatsOn {
         return $return_cat;
     }
 
-    public function get_related_films($post) {
+    public function get_related_films($post, $post_type = ['films', 'events']) {
         $return_post = [];
 
         $args = [
             'post__not_in' => [$post->ID],
-            'post_type'      => 'films',
+            'post_type'      => $post_type,
             'posts_per_page'  => 3,
             'ignore_sticky_posts' => 1
         ];

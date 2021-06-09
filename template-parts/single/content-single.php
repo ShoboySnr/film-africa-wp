@@ -34,7 +34,7 @@ $mail_link = "mailto:?subject=$title&body=$excerpt - $url";
 
         <div class="lg:flex pt-20 pb-32 text-lg">
             <div class="film-overview">
-                <h1 class="font-black text-5xl w-2/3 2xl:w-3/5 pb-10">
+                <h1 class="font-black text-5xl w-full pb-10">
                     <?= get_the_title(); ?>
                 </h1>
                 <?php

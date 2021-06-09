@@ -155,7 +155,6 @@ if (!function_exists('custom_breadcrumb')) {
 
             if(is_archive()) {
                 $terms = get_term_by('slug', $crumbs[2], $crumbs[1], ARRAY_N);
-                var_dump($terms);
             }
 
             $html .= '</section>';
@@ -229,8 +228,8 @@ function render_header_banner_template()
     }
 
     if (is_single()) {
-        if (get_post_type() == 'films') {
-            return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-' . get_post_type() . '.php';
+        if (get_post_type() == 'films' || get_post_type() == 'events') {
+            return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-films-events.php';
         }
         return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-single.php';
     }
@@ -420,3 +419,18 @@ function register_rest_routes() {
         'permission_callback' => '__return_true',
     ));
 }
+
+/**
+ * remove term descriptions from post editor
+ */
+function filmafrica_wp_hide_cat_descr() { ?>
+    <style type="text/css">
+        .term-description-wrap {
+            display: none;
+        }
+    </style>
+
+<?php }
+
+add_action( 'admin_head-term.php', 'filmafrica_wp_hide_cat_descr' );
+add_action( 'admin_head-edit-tags.php', 'filmafrica_wp_hide_cat_descr' );

@@ -73,6 +73,11 @@ textarea.wpcf7-form-control {
     margin-top: 0.5rem;
 }
 
+.subscription-form-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
 /** font sizes **/
 .text-editor h1,
 .text-editor h2,
@@ -173,6 +178,10 @@ main section div .access-button:hover {
     max-width: max-content;
 }
 
+.book-now-button:hover {
+    background-color: var(--color-yellow);
+}
+
 /** Video Popup Widget **/
 .wp-video-popup-wrapper {
     background: rgba(0, 0, 0, 0.40);
@@ -188,8 +197,12 @@ main section div .access-button:hover {
 }
 
 /** Filters Select Drop Down max-width **/
+#filters > span > select[id=festival-year] {
+    max-width: 8.35rem;
+}
+
 #filters > span > select {
-    max-width: 6.437rem !important;
+    max-width: 6.437rem;
 }
 
 /** height of the default banner of those banners that has no featured image **/
@@ -241,4 +254,21 @@ ul#primary-menu li a:hover {
     .subcategory {
         max-width: 55rem;
     }
+}
+
+/** styles for sub categories on whats-on **/
+#filters-input.subcategory input[type=radio] ~ label:hover {
+    background-color: var(--color-red);
+    color: #ffffff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#filters-input.category input[type=radio] ~ label:hover,
+#filters-input.category button[name=filter-by]:hover {
+    color: #000000;
+}
+
+#clear-filter span:hover {
+    color: var(--color-red);
 }

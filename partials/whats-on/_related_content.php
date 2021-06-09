@@ -27,7 +27,9 @@ if($new['post_type'] == 'films') {
 
                 if (isset($new['category']['title'])) {
                     ?>
-                    <span class="text-gray-4"><?= $new['category']['title']; ?></span>
+                    <a href="<?= get_term_link($new['category']['id']) ?>" class="text-gray-4 hover:text-red" title="<?= $new['category']['title']; ?>">
+                        <span class="text-gray-4 hover:text-red"><?= $new['category']['title']; ?></span>
+                    </a>
                 <?php }
                 if(isset($new['location']['title'])) {
                     ?>

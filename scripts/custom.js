@@ -1,5 +1,6 @@
 //sub category filter on the whats on page
 $(document).on('click', '#filters-input input', function(event) {
+    event.preventDefault();
 
     const subcategory_val = $(this).val();
     const name = $(this).attr('name');
@@ -7,18 +8,22 @@ $(document).on('click', '#filters-input input', function(event) {
     //return pages i don't want it to load
     if(subcategory_val === 'calender') return;
 
-    event.preventDefault();
+    let route = window.location.href;
+    if(subcategory_val === 'films' || subcategory_val == 'events' || subcategory_val == '') {
+        route = $(this).parent('#filters-input').attr('data-reset-link');
+    }
 
-    document.location.href = path(window.location.href, name, subcategory_val);
+    document.location.href = path(route, name, subcategory_val);
 });
 
 //sub category filter on the whats on page
 $(document).on('change', '#filters select', function(event) {
+    event.preventDefault();
 
     const subcategory_val = $(this).val();
     const name = $(this).attr('name');
 
-    event.preventDefault();
+
 
     document.location.href = path(window.location.href, name, subcategory_val);
 });

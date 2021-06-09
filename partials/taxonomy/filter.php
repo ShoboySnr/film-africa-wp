@@ -5,12 +5,12 @@ use FilmAfricaWP\classes\Taxonomy;
 $check_news = Taxonomy::get_instance()->check_if_taxonomy_exists($terms->slug, $taxonomy);
 $check_events = Taxonomy::get_instance()->check_if_taxonomy_exists($terms->slug, $taxonomy, 'events');
 $check_films = Taxonomy::get_instance()->check_if_taxonomy_exists($terms->slug, $taxonomy, 'films');
-
+$add_only_filterby_link = remove_query_arg(['festival-year', 'subcategory-filter', 'location', 'goto', 'date']);
 ?>
 
 <section>
     <div id="filters" class="filters custom-container">
-    <div class="relative category" id="filters-input">
+    <div class="relative category" id="filters-input" data-reset-link="<?= $add_only_filterby_link ?>">
         <?php
 
         if($has_overview) {

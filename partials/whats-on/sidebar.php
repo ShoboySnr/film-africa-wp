@@ -8,6 +8,7 @@ $category_name = isset($category[0]) ? $category[0]->name : '';
 $twitter_link = "https://twitter.com/share?text=$content&url=$url&hashtags=filmafrica,$category_name";
 $facebook_link = "https://www.facebook.com/sharer/sharer.php?u=$url&t=$title";
 $mail_link = "mailto:?subject=$title&body=$excerpt - $url";
+$post_type = get_post_type();
 
 ?>
 
@@ -16,10 +17,18 @@ $mail_link = "mailto:?subject=$title&body=$excerpt - $url";
     if(!empty($categories)) {
         foreach ($categories as $category) {
             ?>
-            <p class="bg-yellow px-6 py-3 inline-block text-sm">
+            <a href="<?= $category['link'] ?>" class="<?= $post_type =='films' ? 'bg-yellow px-6 py-3 hover:bg-transparent hover:text-yellow' : 'bg-red px-8 py-2 text-white hover:bg-transparent hover:text-red'; ?>  inline-block text-sm">
                 <?= $category['title']; ?>
-            </p>
+            </a>
         <?php } } ?>
+    <?php
+
+        if($post_type === 'events') {
+    ?>
+    <p class="font-extrabold pt-11">
+        <?= get_the_title(); ?>
+    </p>
+    <?php } ?>
     <div class="pt-11 font-semibold">
         <div class="flex items-center">
             <picture class="mr-4">

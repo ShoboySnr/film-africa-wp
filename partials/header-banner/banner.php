@@ -20,12 +20,11 @@ if(isset($posts[0])) {
 </section>
 <?php
 } else {
-var_dump($posts);
     ?>
     <section class="h-356 bg-black-2">
         <div class="custom-container flex justify-end">
             <div class="trapezium-banner banner top-64">
-                <h1 class="banner-text"><?= get_the_title() ?></h1>
+                <h1 class="banner-text"><?= __('Page Not Found') ?></h1>
             </div>
         </div>
     </section>

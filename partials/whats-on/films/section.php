@@ -3,26 +3,31 @@
         class="hidden tab"
         type="radio"
         name="filter-by"
-        id="overview"
-        <?= $filter_by == '' || $filter_by == 'overview' ? 'checked' : '' ?>
-        value="overview"
+        id="synopsis-and-directors"
+        <?= $filter_by == '' || $filter_by == 'synopsis' ? 'checked' : '' ?>
+        value="synopsis-and-directors"
     >
     <label
         class="tab-label"
-        for="overview"
-    ><?= __('Overview', 'film-africa-wp') ?></label>
+        for="synopsis-and-directors"
+    ><?= __('Synopsis', 'film-africa-wp') ?></label>
 
+    <?php
+
+    if(!empty($casts)) {
+    ?>
     <input
         class="hidden tab"
         type="radio"
         name="filter-by"
-        id="cast-and-creators"
-        <?= $filter_by == 'cast-and-creators' ? 'checked' : '' ?>
-        value="cast-and-creators"
+        id="directors-cast-and-crew"
+        <?= $filter_by == 'directors-cast-and-crew' ? 'checked' : '' ?>
+        value="directors-cast-and-crew"
     >
     <label
         class="tab-label"
-        for="cast-and-creators">
-        <?= __('Cast and Creators', 'film-africa-wp') ?>
+        for="directors-cast-and-crew">
+        <?= __('Directors, Cast and Crew', 'film-africa-wp') ?>
     </label>
+    <?php  } ?>
 </section>
