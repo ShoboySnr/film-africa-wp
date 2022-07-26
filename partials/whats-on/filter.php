@@ -9,11 +9,12 @@ $get_location = $_GET['location'] ?? '';
 
 $festival_years = Utilities::get_instance()->get_terms_of_posts('year_category');
 $locations = Utilities::get_instance()->get_terms_of_posts('location_category');
+$add_only_filterby_link = remove_query_arg(['festival-year', 'subcategory-filter', 'location', 'goto', 'date']);
 
 ?>
 
 <section class="filters custom-container flex flex-col lg:flex-row items-center">
-    <div class="subcategory" id="filters-input">
+    <div class="subcategory" id="filters-input" data-reset-link="<?= $add_only_filterby_link ?>">
         <input
             class="hidden filter"
             type="radio"

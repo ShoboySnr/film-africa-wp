@@ -228,7 +228,7 @@ function render_header_banner_template()
     }
 
     if (is_single()) {
-        if (get_post_type() == 'films' || get_post_type() == 'events') {
+        if (get_post_type() == 'films') {
             return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-films-events.php';
         }
         return include_once FILM_AFRICA_PARTIAL_VIEWS . '/header-banner/banner-single.php';

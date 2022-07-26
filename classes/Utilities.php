@@ -406,6 +406,8 @@ class Utilities
 
         return substr($text, 0, $number). ' […]';
     }
+
+
     /**
      * Singleton poop.
      *

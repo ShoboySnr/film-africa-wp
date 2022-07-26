@@ -46,8 +46,22 @@ $get_partners = \FilmAfricaWP\pages\Partners::get_instance()->get_partners($filt
 
         </div>
         <div class="pt-2">
+            <div class="get-partner-container">
+                <?php
+
+                foreach($get_partners as $get_partner) {
+                ?>
+                <picture>
+                    <img src="<?= $get_partner['image'] ?>" title="<?= $get_partner['title'] ?>" alt="<?= $get_partner['title'] ?>" />
+                </picture>
+
+                <?php
+                }
+
+                ?>
+            </div>
             <!-- partners logo expected here -->
-            <picture><img src="<?= $partners_img; ?>" alt=""></picture>
+<!--            <picture><img src="--><?//= $partners_img; ?><!--" alt=""></picture>-->
         </div>
     </div>
 

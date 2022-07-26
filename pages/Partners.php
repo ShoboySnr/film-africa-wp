@@ -46,7 +46,7 @@ class Partners
 
                 $return_data[] = [
                     'title' => $post->post_title,
-                    'images' => $post_thumbnail,
+                    'image' => $post_thumbnail,
                 ];
             }
 

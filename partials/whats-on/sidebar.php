@@ -4,6 +4,7 @@ $url = get_permalink();
 $content = substr(get_the_title(), 0, 100);
 $title = get_the_title();
 $excerpt = get_the_excerpt();
+$note_black = FILM_AFRICA_ASSETS_ICONS_DIR.'/note.svg';
 $category_name = isset($category[0]) ? $category[0]->name : '';
 $twitter_link = "https://twitter.com/share?text=$content&url=$url&hashtags=filmafrica,$category_name";
 $facebook_link = "https://www.facebook.com/sharer/sharer.php?u=$url&t=$title";
@@ -14,6 +15,19 @@ $post_type = get_post_type();
 
 <div class="film-details">
     <?php
+
+    if($post_type == 'events' && !empty($book_now['url'])) {
+
+    ?>
+    <a href="<?= $book_now['url'] ?>" type="button" class="px-12 py-2.5 bg-yellow hidden xl:flex items-center font-bold absolute -top-24">
+              <span class="mx-2 fill-current">
+                <img src="<?= $note_black ?>" alt="<?= __('note', 'film-africa-wp') ?>">
+              </span>
+        <span><?= !empty($book_now['title']) ? $book_now['title'] : __('Book Now', 'film-africa-wp') ?></span>
+    </a>
+    <?php
+    }
+
     if(!empty($categories)) {
         foreach ($categories as $category) {
             ?>
@@ -103,7 +117,7 @@ $post_type = get_post_type();
                   <img src="<?= $note_white ?>" alt="<?= __('note', 'film-africa-wp') ?>" >
                 </span>
 
-            <span><?= $book_now['title'] ?> </span>
+            <span><?= !empty($book_now['title']) ? $book_now['title'] : __('Book Now') ?> </span>
         </a>
     </div>
     <?php } ?>

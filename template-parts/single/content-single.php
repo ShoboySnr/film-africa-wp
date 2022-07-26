@@ -55,7 +55,15 @@ $mail_link = "mailto:?subject=$title&body=$excerpt - $url";
                     <span class="inline-block bg-black text-white px-3 py-2 text-xs"
                     ><?= $category[0]->name; ?></span>
                     <?php
-                } ?>
+                }
+                $press_release_format = get_field('press_release_format');
+                if(!empty($press_release_format)) {
+                    ?>
+                    <span class="inline-block bg-black text-white px-3 py-2 text-xs"
+                    ><?= $press_release_format; ?></span>
+                <?php
+                }
+                ?>
                 <p class="font-extrabold pt-11">
                     <?= get_the_title(); ?>
                 </p>

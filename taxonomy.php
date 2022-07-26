@@ -10,13 +10,7 @@ get_header();
 ?>
 <main class="border-t">
     <?php
-    while ( have_posts() ) :
-        the_post();
         get_template_part( 'template-parts/content', 'taxonomy' );
-
-    endwhile; // End of a the loop.
-
-
     ?>
 </main>
 <?php

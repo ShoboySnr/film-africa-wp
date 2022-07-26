@@ -26,12 +26,18 @@ $tags = get_the_tags();
 ?>
 <section class="bg-gray-1">
     <div class="custom-container">
-        <div class="flex flex-col xl:flex-row pt-20 pb-32">
-            <div class="film-overview">
+        <div class="relative w-full overflow-hidden flex previous-winner-hero">
+            <img
+                    src="<?= get_the_post_thumbnail_url() ?>"
+                    alt="<?= $posts[0]->post_name ?>"
+                    class="w-full object-cover object-center flex-shrink-0" height="510" />
+        </div>
+        <div class="flex flex-col xl:flex-row pt-20 pb-32 relative">
+            <article class="film-overview">
                 <?php
                 include_once FILM_AFRICA_PARTIAL_VIEWS.'/whats-on/events/content.php';
                 ?>
-            </div>
+            </article>
             <?php include_once(FILM_AFRICA_PARTIAL_VIEWS.'/whats-on/sidebar.php'); ?>
         </div>
     </div>

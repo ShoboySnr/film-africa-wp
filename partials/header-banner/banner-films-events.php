@@ -43,7 +43,7 @@ $date = custom_date_format(get_field('start_date'), get_field('end_date'));
             <img src="<?= $note; ?>" alt="note" >
           </span>
 
-                <span><?=  __($book_now['title'], 'film-africa-wp') ?> </span>
+                <span><?= !empty($book_now['title']) ? $book_now['title'] : __('Book Now', 'film-africa-wp') ?> </span>
             </a>
 
         </div>
