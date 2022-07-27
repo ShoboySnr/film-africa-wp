@@ -11,12 +11,14 @@ if($new['post_type'] == 'films') {
 ?>
 <figure class="film-post">
     <div class="film-post-image">
-        <img
-            src="<?= $new['image'] ?>"
-            alt="<?= $new['title'] ?>"
-            title="<?= $new['title'] ?>"
-            height="282"
-            width="390">
+      <a href="<?= $new['link'] ?>" title="<?= $new['title'] ?>">
+          <img
+              src="<?= $new['image'] ?>"
+              alt="<?= $new['title'] ?>"
+              title="<?= $new['title'] ?>"
+              height="282"
+              width="390">
+      </a>
         <?= $post_type ?>
     </div>
 

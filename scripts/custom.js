@@ -11,7 +11,6 @@ $(document).on('click', '#filters-input input', function(event) {
     let route = window.location.href;
     if(subcategory_val === 'films' || subcategory_val == 'events' || subcategory_val == '') {
         route = $(this).parent('#filters-input').attr('data-reset-link');
-        console.log(route);
     }
 
     document.location.href = path(route, name, subcategory_val);

@@ -1,5 +1,39 @@
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 ul {
     list-style: none;
+    margin-left: 0;
+}
+
+.site {
+    overflow-x: hidden;
+}
+
+.btn {
+    padding: 0.55rem 1.75rem;
+}
+
+.subcategory {
+    flex-direction: row;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.post, .page {
+    margin: 0;
+}
+
+ul.sub-menu {
+    margin-left: 0;
+}
+
+.sub-menu li a {
+    color: #ffffff;
 }
 
 button:active {
@@ -102,17 +136,16 @@ textarea.wpcf7-form-control {
     padding-top: 2.5rem;
 }
 
+.text-editor ul {
+    padding: 0;
+}
+
 
 /** films styles **/
 .single-films .film-overview #tabs p {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
-
-/** Remove the last arrow in the breadcrumb **/
-/*.breadcrumbs span:last-of-type {*/
-/*    display: none;*/
-/*}*/
 
 /** remove the last hr in the sub menu **/
 #submenu hr:last-of-type {
@@ -128,7 +161,7 @@ main #tabs label:not(label:first-of-type) {
 main ul {
     list-style-type: "-";
     line-height: 30px;
-    padding: 3.5rem 0.5rem 0 0;
+    /*padding: 3.5rem 0.5rem 0 0;*/
     margin: 0 0 3.5rem 0;
     font-size: 1.125rem;
 }
@@ -158,10 +191,15 @@ main section div .access-button:hover {
     font-weight: 800;
 }
 
-.tabs .tab-label:not(:last-child) {
+.tabs .tab-label:first-child {
     border-right-width: 0;
     padding-right: 0;
     border: none;
+}
+
+.tabs .tab-label:not(:last-child) {
+    border-right-width: 0 !important;
+    padding-right: 0 !important;
 }
 
 /** Loading svg css **/
@@ -170,8 +208,10 @@ main section div .access-button:hover {
     justify-content: center;
 }
 
-#filters-input input[type=radio] ~ label {
-    max-width: 300px;
+#press #filters-input input[type=radio]:checked + label {
+    display: inline-block;
+    color: white;
+    background-color: #ee4722;
 }
 
 .book-now-button {
@@ -274,7 +314,7 @@ ul#primary-menu li a:hover {
 }
 
 #slideshow img, .img-banner-2 img, .img-banner img {
-    filter: brightness(30%);
+    filter: brightness(80%);
 }
 
 .press-category {
@@ -292,9 +332,13 @@ Partner Page Styling
     margin-right: auto;
     padding-top: .5rem;
     padding-bottom: 9rem;
-    gap: 0.75rem;
+    gap: 1.75rem;
     grid-auto-rows: auto;
+}
 
+.get-partner-container img {
+    width: 150px;
+    margin: 39px auto;
 }
 
 @media (min-width: 640px) {
@@ -305,14 +349,345 @@ Partner Page Styling
 }
 
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
     .get-partner-container {
-        grid-template-columns: repeat(2,minmax(0,200px));
+        grid-template-columns: repeat(2,minmax(0,400px));
     }
 }
 
 @media (min-width: 1280px) {
     .get-partner-container {
-        grid-template-columns: repeat(4,minmax(0,200px));
+        grid-template-columns: repeat(4,minmax(0,2500px));
     }
+}
+
+/*fixes*/
+.slide-btn {
+
+    margin-bottom: -26px;
+}
+
+.bottom-25 {
+    bottom: 8rem;
+}
+
+main ul {
+
+    padding-bottom: 0.5rem !important;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.125rem;
+}
+
+.text-editor p {
+
+    padding-top: 0.5rem !important;
+}
+
+/*.filter-option{*/
+/*    margin-left: 0.5rem;*/
+/*}*/
+
+#filters > span > select {
+    max-width: 7.437rem;
+}
+
+.category {
+    display: block;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+@media (max-width: 998px) {
+    .category {
+        margin-top: 1.9rem;
+        margin-bottom: 1.9rem;
+    }
+}
+
+@media (max-width: 744px) {
+    .category {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .subcategory {
+        max-width: 38rem;
+    }
+}
+
+.home #slideshow {
+    overflow-y: hidden;
+    min-height: 600px;
+}
+
+#wpadminbar ~ #page section.slide-wrapper {
+    margin-top: 32px;
+}
+
+.home #slideshow img {
+    height: 100%;
+}
+
+.home .slide-wrapper picture {
+    height: 100% !important;
+}
+
+.release {
+    color: #ffffff !important;
+}
+
+.release:hover {
+    filter: brightness(85%);
+}
+
+
+
+@media screen and (max-width: 746px) {
+    .img-banner-2 .banner-text-container {
+        top: calc(100% + 75px) !important;
+    }
+
+    .img-banner-2 .banner-text-container .flex-trapezium-banner {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .banner-text {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .home #slideshow {
+        margin-top: -16px;
+    }
+}
+
+.home #slideshow .slide-wrapper {
+    min-height: 600px;
+    height: 100vh;
+}
+
+.img-banner-2 {
+    height: 32.375rem;
+}
+
+.img-banner-2 .banner-text-container {
+    position: relative;
+    top: calc(100% - 75px);
+}
+
+.img-banner-2 .banner-text-container .flex-trapezium-banner {
+    max-width: 40%;
+}
+
+
+.slide-wrapper picture {
+    height: 34.375rem;
+    width: 100%;
+    object-fit: cover;
+    margin-top: -32px;
+}
+
+/*.slide-1,*/
+/*.slide-2,*/
+/*.slide-3 {*/
+/*    transition: all 5s ease-out;*/
+/*}*/
+
+.slide-wrapper > * {
+    animation: 40s slider_animated infinite linear;
+    opacity: 0;
+    animation-play-state: paused
+}
+
+@keyframes slider_animated {
+    1% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    33.33% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.slide-wrapper > *:nth-child(1) {
+    animation-delay: 20s;
+}
+
+.slide-wrapper > *:nth-child(2) {
+    animation-delay: 25s;
+}
+
+.slide-wrapper > *:nth-child(3) {
+    animation-delay: 30s;
+}
+
+
+.past-festival-bg-img {
+    background-size: cover;
+    background-position: center;
+}
+
+.year-category-filters#filters-input {
+    max-width: 100% !important;
+    overflow-x: auto;
+}
+
+.year-category-filters#filters-input label {
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.tags-container span {
+    font-size: 13px;
+}
+
+.film-overview {
+    border-right-width: 2px;
+    border-color: #cccccc;
+}
+
+#tabs.submenu-container .active {
+    color: #ee4722;
+}
+
+.whatson-container {
+    overflow-x: scroll;
+    max-width: 90%;
+}
+
+@media screen and (max-width: 746px) {
+    .partners-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 3rem;
+    }
+
+    .partners-logo-container {
+        flex-direction: column;
+    }
+
+    .partners-container .filter {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .partners-container .subcategory {
+        flex-direction: row;
+        overflow-x: scroll;
+        align-items: flex-start;
+        display: flex;
+        max-width: 100%
+    }
+
+    .get-partner-container {
+        grid-template-columns: auto auto;
+        padding-bottom: 2.5rem;
+    }
+
+    .category {
+        margin-top: 1.9rem;
+        margin-bottom: 1.9rem;
+    }
+
+    .partners-logo-container {
+        padding-top: 1rem;
+    }
+}
+
+.wpcf7-form input::placeholder,
+.wpcf7-form textarea::placeholder {
+    color: #828282;
+}
+
+.team-content {
+    width: 100%;
+    min-height: 600px;
+    height: 80vh;
+}
+
+.team-content .team-details {
+    height: calc(100% - 7.5rem);
+    overflow-y: scroll;
+}
+
+.press-img {
+    height: 23.937rem;
+}
+
+.press-date {
+    position: absolute;
+    bottom: 39px;
+}
+
+.release-container {
+    padding-bottom: 0;
+}
+
+#v-cal .vcal-date--selected {
+    color: #ee4722;
+}
+
+.text-13 {
+    font-size: 13px;
+}
+
+.img-banner-2 button.wp-video-popup img {
+    filter: none !important;
+}
+
+.snippet-btn-container {
+    margin-bottom: 10px;
+}
+
+#content_area ul {
+    list-style: disc !important;
+    margin: 0 0 1.5em 3em !important;
+}
+
+#content_area blockquote,
+#content_area dd,
+#content_area dl,
+#content_area figure,
+#content_area h1,
+#content_area h2,
+#content_area h3,
+#content_area h4,
+#content_area h5,
+#content_area h6,
+#content_area hr,
+#content_area p,
+#content_area pre {
+    margin-bottom: 1.5px !important;
+}
+
+.film-post-image img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+
+.book-now-button:visited,
+.book-now-button:focus {
+    color: #ffffff !important;
 }

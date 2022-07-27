@@ -19,8 +19,8 @@ $page_title = get_field('page_title');
                 </h1>
             <?php } ?>
 
-            <div class="text-lg font-normal pt-12 mt-0.5 leading-7.5 overflow-y-hidden snippet expand-snippet">
-                <?= get_the_content(); ?>
+            <div class="text-lg font-normal mt-0.5 leading-7.5 overflow-y-hidden snippet expand-snippet" id="content_area">
+                <?php the_content(); ?>
             </div>
         </div>
     </section>
